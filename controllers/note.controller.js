@@ -152,6 +152,7 @@ async function _processingImages(images) {
  * - search
  * - last
  * - limit
+ * - public
  *
  */
 
@@ -176,6 +177,7 @@ function _makeFilterRules({
   search,
   lastId,
   limit,
+  isPublic,
 }) {
   const filter = {};
   const projection = {};
@@ -191,6 +193,10 @@ function _makeFilterRules({
 
   if (lastId) {
     filter._id = { $lt: lastId };
+  }
+
+  if (isPublic) {
+    filter.isPublic = true;
   }
 
   return { filter, projection, limit };

@@ -48,6 +48,7 @@ router.get(
   validatorSearch.searchString,
   validatorSearch.lastId,
   validatorSearch.limit,
+  validatorSearch.isPublic,
 
   controller.search,
 );

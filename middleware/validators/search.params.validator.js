@@ -28,3 +28,9 @@ module.exports.limit = async (ctx, next) => {
 
   await next();
 };
+
+module.exports.isPublic = async (ctx, next) => {
+  ctx.query.isPublic = !!ctx.query.isPublic;
+
+  await next();
+};
