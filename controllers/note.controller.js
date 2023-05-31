@@ -1,4 +1,5 @@
 const fs = require('fs/promises');
+const sharp = require('sharp');
 const path = require('path');
 const Note = require('../models/Note');
 const mapper = require('../mappers/note.mapper');
@@ -134,8 +135,14 @@ function _deleteImages(files) {
 async function _processingImages(images) {
   const res = [];
   for (const image of images) {
-    await fs.rename(image.filepath, path.join(__dirname, `../files/images/${image.newFilename}`))
-      .catch((error) => logger.error(error.mesasge));
+    await _resizePhoto(image.filepath, path.join(__dirname, `../files/images/${image.newFilename}`))
+      .catch((error) => logger.error(`error resizing image: ${error.message}`));
+
+    _deleteFile(image.filepath);
+
+    // перемещение файла без обработки
+    // await fs.rename(image.filepath, path.join(__dirname, `../files/images/${image.newFilename}`))
+    //   .catch((error) => logger.error(error.mesasge));
 
     res.push({
       originalName: image.originalFilename,
@@ -143,6 +150,20 @@ async function _processingImages(images) {
     });
   }
   return res;
+}
+
+async function _resizePhoto(filepath, newFilename) {
+  return sharp(filepath)
+    .resize({
+      width: 350,
+      height: 350,
+    })
+    .toFile(newFilename);
+}
+
+function _deleteFile(fpath) {
+  fs.unlink(fpath)
+    .catch((error) => logger.error(`delete file: ${error.message}`));
 }
 
 /**
