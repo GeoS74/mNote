@@ -38,10 +38,13 @@ const router = new Router({ prefix: '/api/mnote' });
  *
  */
 
-router.use(accessCheck, validator.email);
+router.use(
+  accessCheck,
+  // validator.email,
+);
 
 router.get(
-  '/search/doc',
+  '/search/note',
   validatorSearch.searchString,
   validatorSearch.lastId,
   validatorSearch.limit,

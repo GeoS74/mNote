@@ -61,7 +61,7 @@ module.exports.deleteAtatchedFile = async (ctx) => {
 
   note = await _updateAttachedFileList(note._id, { fileName: ctx.request.body.fileName });
 
-  /* delete images */
+  // /* delete images */
   _deleteImages([{ fileName: ctx.request.body.fileName }]);
 
   ctx.status = 200;
@@ -117,7 +117,13 @@ function _updateAttachedFileList(id, files) {
 function _deleteImages(files) {
   for (const file of files) {
     fs.unlink(`./files/images/${file.fileName}`)
-      .catch((error) => logger.error(error.mesasge));
+      .catch((error) => {
+        if (error.code === 'ENOENT') {
+          logger.error('попытка удалить не существующий файл');
+          return;
+        }
+        logger.error(error);
+      });
   }
 }
 

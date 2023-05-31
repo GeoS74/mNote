@@ -10,6 +10,10 @@ const Schema = new mongoose.Schema({
     type: String,
   },
   files: [{ originalName: String, fileName: String }],
+  isPublic: {
+    type: Boolean,
+    default: false,
+  },
 }, {
   timestamps: true,
 });
