@@ -8,7 +8,7 @@
     "lint:fix": "eslint . --fix",
     "db:init": "node ./libs/db.init.js",
     "db:drop": "node ./libs/db.init.js --drop",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --no-warnings --ignore=node_modules/** **/*.test.js"
   },
   "author": "A.G. Brothers",
   "license": "ISC",
@@ -24,11 +24,14 @@
     "log4js": "^6.9.1",
     "mongoose": "^7.2.2",
     "mongoose-unique-validator": "^4.0.0",
+    "node-fetch": "^2.6.11",
     "sharp": "^0.32.1"
   },
   "devDependencies": {
+    "chai": "^4.3.7",
     "eslint": "^8.41.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5"
+    "eslint-plugin-import": "^2.27.5",
+    "mocha": "^10.2.0"
   }
 }
