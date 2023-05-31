@@ -32,7 +32,7 @@ GET /api/mnote/search/note
 
 Маршрут:
 ```
-GET /api/informator/docflow/:id
+GET /api/mnote/:id
 ```
 где `:id` - идентификатор записи
 
@@ -57,7 +57,7 @@ POST /api/mnote
 
 Маршрут:
 ```
-PATCH /api/informator/docflow/:id
+PATCH /api/mnote/:id
 ```
 где `:id` - идентификатор записи
 
@@ -78,7 +78,7 @@ PATCH /api/informator/docflow/:id
 
 Маршрут:
 ```
-DELETE /api/informator/docflow/:id
+DELETE /api/mnote/:id
 ```
 где `:id` - идентификатор записи
 
@@ -88,7 +88,7 @@ DELETE /api/informator/docflow/:id
 
 Маршрут:
 ```
-PATCH /api/informator/file/:id
+PATCH /api/mnote/file/:id
 ```
 где `:id` - идентификатор записи
 
