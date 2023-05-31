@@ -64,7 +64,7 @@ router.post(
   koaBody(optional),
   validator.title,
   validator.files,
-  validator.isPublic,
+  // validator.isPublic,
   controller.add,
 );
 router.patch(
