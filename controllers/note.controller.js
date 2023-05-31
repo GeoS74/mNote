@@ -75,11 +75,13 @@ function _getNote(id) {
 function _addNote({
   title,
   message,
+  isPublic,
   files,
 }) {
   return Note.create({
     title,
     message,
+    isPublic,
     files,
   });
 }
@@ -87,6 +89,7 @@ function _addNote({
 function _updateNote(id, {
   title,
   message,
+  isPublic,
   files,
 }) {
   return Note.findByIdAndUpdate(
@@ -94,6 +97,7 @@ function _updateNote(id, {
     {
       title,
       message,
+      isPublic,
       $push: { files },
     },
     {

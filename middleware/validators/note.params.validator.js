@@ -2,6 +2,12 @@ const fs = require('fs/promises');
 const { isValidObjectId } = require('mongoose');
 const logger = require('../../libs/logger');
 
+module.exports.isPublic = async (ctx, next) => {
+  ctx.request.body.isPublic = !!ctx.request.body.isPublic;
+
+  await next();
+};
+
 module.exports.title = async (ctx, next) => {
   if (!_checkTitle(ctx.request?.body?.title)) {
     _deleteFile(ctx.request.files);

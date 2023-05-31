@@ -63,6 +63,7 @@ router.post(
   koaBody(optional),
   validator.title,
   validator.files,
+  validator.isPublic,
   controller.add,
 );
 router.patch(
@@ -71,6 +72,7 @@ router.patch(
   validator.objectId,
   validator.title,
   validator.files,
+  validator.isPublic,
   controller.update,
 );
 router.delete(
