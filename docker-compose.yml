@@ -8,7 +8,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=passwordXXX
       - MONGO_INITDB_DATABASE=admin
-  informator_app:
+  mnone_app:
     build: .
     ports:
       - "3300:3300"
@@ -23,7 +23,7 @@ services:
       - JWT_CHECK=true
       - JWT_SECRET_KEY=any secret phrase
     volumes:
-      - files-mnote:/informator/files/images
+      - files-mnote:/mnote/files/images
 volumes:
   db-mnote:
   files-mnote:
