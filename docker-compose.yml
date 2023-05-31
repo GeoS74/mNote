@@ -1,0 +1,29 @@
+version: '1.0'
+services:
+  db_mblog:
+    image: "mongo"
+    volumes:
+      - db-mnote:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=passwordXXX
+      - MONGO_INITDB_DATABASE=admin
+  informator_app:
+    build: .
+    ports:
+      - "3300:3300"
+    environment:
+      - SERVER_PORT=3300
+      - NODE_ENV=dev
+      - DB_USER=root
+      - DB_PASS=passwordXXX
+      - DB_HOST=db_mnote
+      - DB_PORT=27017
+      - DB_NAME=admin
+      - JWT_CHECK=true
+      - JWT_SECRET_KEY=any secret phrase
+    volumes:
+      - files-mnote:/informator/files/images
+volumes:
+  db-mnote:
+  files-mnote:
