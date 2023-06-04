@@ -96,4 +96,4 @@ router.patch(
 module.exports.routes = router.routes();
 
 // static files
-module.exports.static = mount('/api/informator/mnote/images', serve('./files/images'));
+module.exports.static = mount('/api/mnote/static/images', serve('./files/images'));
