@@ -38,10 +38,10 @@ const router = new Router({ prefix: '/api/mnote' });
  *
  */
 
-router.use(
-  accessCheck,
-  // validator.email,
-);
+// router.use(
+//   accessCheck,
+//   // validator.email,
+// );
 
 router.get(
   '/search/note',
@@ -61,6 +61,7 @@ router.get(
 
 router.post(
   '/',
+  accessCheck,
   koaBody(optional),
   validator.title,
   validator.files,
@@ -69,6 +70,7 @@ router.post(
 );
 router.patch(
   '/:id',
+  accessCheck,
   koaBody(optional),
   validator.objectId,
   validator.title,
@@ -78,12 +80,14 @@ router.patch(
 );
 router.delete(
   '/:id',
+  accessCheck,
   validator.objectId,
   controller.delete,
 );
 
 router.patch(
   '/file/:id',
+  accessCheck,
   koaBody(optional),
   validator.objectId,
   controller.deleteAtatchedFile,
