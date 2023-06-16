@@ -4,7 +4,7 @@ const connection = require('../libs/connection');
 const Schema = new mongoose.Schema({
   title: {
     type: String,
-    required: 'не заполнено обязательное поле {PATH}',
+    // required: 'не заполнено обязательное поле {PATH}',
   },
   message: {
     type: String,

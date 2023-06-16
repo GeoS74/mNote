@@ -156,7 +156,7 @@ async function _resizePhoto(filepath, newFilename) {
   return sharp(filepath)
     .resize({
       width: 350,
-      height: 350,
+      // height: 350,
     })
     .toFile(newFilename);
 }

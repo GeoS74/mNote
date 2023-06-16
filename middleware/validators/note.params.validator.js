@@ -9,10 +9,10 @@ module.exports.isPublic = async (ctx, next) => {
 };
 
 module.exports.title = async (ctx, next) => {
-  if (!_checkTitle(ctx.request?.body?.title)) {
-    _deleteFile(ctx.request.files);
-    ctx.throw(400, 'invalid title');
-  }
+  // if (!_checkTitle(ctx.request?.body?.title)) {
+  //   _deleteFile(ctx.request.files);
+  //   ctx.throw(400, 'invalid title');
+  // }
 
   await next();
 };
